@@ -1,6 +1,34 @@
 from sqlalchemy.orm import Session
 import models, schemas
 
+def main_html_reponse():
+    return """
+    <html>
+        <head>
+        <title>Reto IoT TC1004</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+        </style>
+        </head>
+        <body>
+            <h1>API ara la TC1004B</h1>
+            <h3>Elaborado por:</h3>
+            <ul>
+                <li>Joshua Amaya</li>
+                <li>Diego Corrales</li>
+                <li>Sebastián González</li>
+                <li>Gerardo Gutiérrez</li>
+                <li>Mateo Herrera</li>
+                <li>Do Hyun Nam</li>
+            </ul>
+        </body>
+    </html>
+    """
+
 def get_registros(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Registro).offset(skip).limit(limit).all()
 

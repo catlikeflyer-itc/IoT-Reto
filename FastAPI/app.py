@@ -1,5 +1,6 @@
 from typing import List
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import crud, models, schemas
@@ -32,9 +33,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def main():
-    return {"message": "API para la TC1004B"}
+    return crud.main_html_reponse()
 
 @app.get("/registros/", response_model=List[schemas.Registro])
 def get_all_registros(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
