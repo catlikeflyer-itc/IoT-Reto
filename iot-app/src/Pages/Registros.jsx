@@ -21,7 +21,6 @@ export default function Registros() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}></Grid>
         <Grid item xs={12} md={8}>
-          <Box m={4} display="flex" flexDirection="row">
             <Grid container spacing={3}>
               {data.map((d) => (
                 <Grid item xs={12} md={4}>
@@ -29,7 +28,6 @@ export default function Registros() {
                 </Grid>
               ))}
             </Grid>
-          </Box>
         </Grid>
       </Grid>
     </Box>

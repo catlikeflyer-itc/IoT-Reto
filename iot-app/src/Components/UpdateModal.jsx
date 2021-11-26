@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UpdateModal({ idx }) {
+export default function UpdateModal({ idx, verified }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   // Title value
@@ -85,8 +85,8 @@ export default function UpdateModal({ idx }) {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
-        Verificar
+      <Button size="small" color="primary" onClick={handleOpen} disabled={verified}>
+        {verified ? "Verificado" : "Verificar"}
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
