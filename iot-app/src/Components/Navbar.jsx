@@ -58,10 +58,9 @@ export default function Navbar() {
 
   const items = [
     "Home",
-    "Registrar Admin",
-    "Registrar Salon",
-    "Ver registros",
-    "Registro Manual",
+    "Administradores",
+    "Salones",
+    "Registros",
   ];
 
   const list = (anchor) => (
@@ -111,17 +110,14 @@ export default function Navbar() {
               <Button href="/" color="inherit">
                 Home
               </Button>
-              <Button edge="right" href="registrar-admin" color="inherit">
-                Registrar Admin
+              <Button edge="right" href="admin" color="inherit">
+                Administradores
               </Button>
-              <Button edge="right" href="registrar-salon" color="inherit">
-                Registrar Salon
+              <Button edge="right" href="salones" color="inherit">
+                Salones
               </Button>
               <Button href="registros" color="inherit">
-                Ver registros
-              </Button>
-              <Button href="add-registros" color="inherit">
-                Registro Manual
+                Registros
               </Button>
             </div>
           )}

@@ -1,8 +1,9 @@
 import Navbar from "./Components/Navbar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AddAdmin from "./Components/AddAdmin";
-import AddSalon from "./Components/AddSalon";
+
+import Admin from "./Pages/Admin";
+import Salon from "./Pages/Salon";
 
 const theme = createTheme({
   typography: {
@@ -22,8 +23,8 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" />
-            <Route path="/registrar-admin" element={<AddAdmin/>} />
-            <Route path="/registrar-salon" element={<AddSalon/>} />
+            <Route path="/admin" element={<Admin/>} />
+            <Route path="/salones" element={<Salon/>} />
           </Routes>
         </Router>
       </div>
