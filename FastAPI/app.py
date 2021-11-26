@@ -61,3 +61,6 @@ def create_admin(admin: schemas.Admin, db: Session = Depends(get_db)):
 def create_salon(salon: schemas.Salon, db: Session = Depends(get_db)):
     return crud.add_salon(db, salon=salon)
 
+@app.put("/registros/{registro_id}", response_model=schemas.RegistroUpdate)
+def update_registro(registro_id: int, registro: schemas.RegistroUpdate, db: Session = Depends(get_db)):
+    return crud.update_registro(db=db, id=registro_id, registro=registro)

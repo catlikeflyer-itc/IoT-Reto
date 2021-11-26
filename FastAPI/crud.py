@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy.sql.expression import update
 import models, schemas
 
 def main_html_reponse():
@@ -80,3 +81,8 @@ def add_salon(db: Session, salon: schemas.Salon):
     db.refresh(db_salon)
 
     return db_salon
+
+def update_registro(id: int, db: Session, registro: schemas.RegistroUpdate):
+    db.execute(update(models.Registro).where(models.Registro.id == id).values(idSalon=registro.idSalon, matricula=registro.matricula))
+    db.commit()
+ 

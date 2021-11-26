@@ -10,8 +10,8 @@ class Registro(Base):
     CO = Column(Float, nullable=False)
     CO2 = Column(Float, nullable=False)
     humedad = Column(Float, nullable=False)
-    idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=False) # FK
-    matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=False) # FK
+    idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=True) # FK
+    matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=True) # FK
 
     salon = relationship("Salon", back_populates="registros")
     admin = relationship("Admin", back_populates="registros")

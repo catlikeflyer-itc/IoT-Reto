@@ -42,3 +42,10 @@ class Salon(BaseModel):
 
     class Config:
         orm_mode = True
+
+class RegistroUpdate(BaseModel):
+    idSalon: int
+    matricula: str
+
+    class Config:
+        orm_mode = True
