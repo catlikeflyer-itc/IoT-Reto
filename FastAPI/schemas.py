@@ -14,6 +14,19 @@ class Registro(BaseModel):
     class Config:
         orm_mode = True
 
+"""
+JSON Schema
+{
+    "id": int,
+    "tiempo": str,
+    "CO": float,
+    "CO2": float,
+    "humedad": float,
+    "idSalon": int,
+    "matricula": str
+}
+"""
+
 class Admin(BaseModel):
     matricula: str
     isStudent: bool

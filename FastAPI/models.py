@@ -10,8 +10,8 @@ class Registro(Base):
     CO = Column(Float, nullable=False)
     CO2 = Column(Float, nullable=False)
     humedad = Column(Float, nullable=False)
-    idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=False)
-    matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=False)
+    idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=False) # FK
+    matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=False) # FK
 
     salon = relationship("Salon", back_populates="registros")
     admin = relationship("Admin", back_populates="registros")
@@ -34,29 +34,4 @@ class Admin(Base):
 
     registros = relationship("Registro", back_populates="admin")
 
-"""
-# Definir esquema de tabla de dispositivo
-registros = Table("registros", meta, 
-    Column("id", Integer, primary_key=True),
-    # Column("tiempo", String(50)),
-    Column("CO", Float),
-    Column("CO2", Float),
-    Column("humedad", Float),
-    Column("idSalon", ForeignKey("salon.idSalon")),
-    Column("matricula", ForeignKey("admin.matricula")),
-) 
 
-admin = Table("admin", meta,
-    Column("matricula", String(10), primary_key=True),
-    Column("isStudent", Boolean),
-)
-
-salon = Table("salon", meta,
-    Column("idSalon", Integer, primary_key=True),
-    Column("aula", Integer),
-    Column("volumen", Float),
-    Column("ventanas", Integer),
-)
-
-meta.create_all(engine) # crear tablas en la base de datos
-"""

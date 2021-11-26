@@ -44,6 +44,7 @@ def add_registro(db: Session, registro: schemas.Registro):
         idSalon=registro.idSalon,
         matricula=registro.matricula,
     )
+    db.execute(f" UPDATE salon SET volumen = volumen + {registro.CO} WHERE idSalon = {registro.idSalon}")
     db.add(db_registro)
     db.commit()
     db.refresh(db_registro)
