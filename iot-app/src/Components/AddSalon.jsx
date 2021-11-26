@@ -9,6 +9,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 
 export default function AddSalon() {
   const [numSalon, setNumSalon] = useState("");
@@ -67,8 +68,27 @@ export default function AddSalon() {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    if (!volumenError && !ventanaError && !numSalonError) {
-      console.log("Submitted", numSalon, edificio, volumen, ventanas);
+    const data = {
+      idSalon: numSalon,
+      aula: edificio,
+      volumen: volumen,
+      ventanas: ventanas,
+    };
+
+    if (!numSalonError) {
+      console.log(data);
+      axios
+        .post(`http://localhost:8000/salon`, data)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+          alert("Salon agregado");
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Error al agregar el salon");
+        });
     } else {
       console.log("Error");
       alert("revisa los datos");
@@ -77,9 +97,9 @@ export default function AddSalon() {
 
   return (
     <Box m={4} display="flex" flexDirection="column" className="boxer">
-              <Typography gutterBottom variant="h6" color="black" align="left">
-            Agregar Salon
-          </Typography>
+      <Typography gutterBottom variant="h6" color="black" align="left">
+        Agregar Salon
+      </Typography>
       <Box mt={1} width="100%">
         <TextField
           id="num-salon"

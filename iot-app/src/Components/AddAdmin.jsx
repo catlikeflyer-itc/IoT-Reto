@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Box,
@@ -7,6 +7,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 
 export default function AddAdmin() {
   const [matricula, setMatricula] = useState("");
@@ -33,7 +34,23 @@ export default function AddAdmin() {
     setMatError(false);
 
     if (!matError) {
-      console.log("Submit");
+      const user = {
+        matricula: matricula,
+        isStudent: isStudent,
+      };
+
+      axios
+        .post(`http://localhost:8000/admin`, user)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+          alert("Administrador agregado");
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Erro ao adicionar usuário!");
+        });
     } else {
       console.log("Error");
       alert("matricula invalida");
