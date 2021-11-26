@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # URL to connect to the database
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:retoiotpwd@localhost:3306/retoiot"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:retoiotpwd@144.126.221.57:3306/retoiot"
 
 # Create the engine
 engine = create_engine(

@@ -10,7 +10,7 @@ export default function Admin() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8000/admins");
+      const result = await axios("https://api-reto-iot.herokuapp.com/admins");
 
       setData(result.data);
     };

@@ -9,7 +9,7 @@ export default function Registros() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8000/registros");
+      const result = await axios("https://api-reto-iot.herokuapp.com/registros");
 
       setData(result.data);
     };

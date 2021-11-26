@@ -67,7 +67,7 @@ export default function UpdateModal({ idx, verified }) {
       console.log(data);
 
       axios
-        .put(`http://localhost:8000/registros/${idx}`, data)
+        .put(`https://api-reto-iot.herokuapp.com/registros/${idx}`, data)
         .then((res) => {
           alert("Verificacion exitosa");
           window.location.reload();

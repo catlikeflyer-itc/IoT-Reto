@@ -78,7 +78,7 @@ export default function AddSalon() {
     if (!numSalonError) {
       console.log(data);
       axios
-        .post(`http://localhost:8000/salon`, data)
+        .post(`https://api-reto-iot.herokuapp.com/salon`, data)
         .then((res) => {
           console.log(res);
           console.log(res.data);

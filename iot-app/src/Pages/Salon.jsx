@@ -10,7 +10,7 @@ export default function Salon() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8000/salones");
+      const result = await axios("https://api-reto-iot.herokuapp.com/salones");
 
       setData(result.data);
     };

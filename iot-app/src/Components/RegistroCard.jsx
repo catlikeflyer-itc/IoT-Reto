@@ -12,7 +12,7 @@ export default function RegistroCard({ data }) {
     if (data.matricula !== "AA11" || data.idSalon !== 9999) {
       setVerified(true);
     }
-  }, []);
+  }, [data]);
 
   return (
     <Card sx={{ maxWidth: "345" }}>

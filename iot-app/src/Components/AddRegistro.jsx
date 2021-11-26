@@ -80,7 +80,7 @@ export default function AddRegistro() {
       if (!salonError) {
         console.log(data);
         axios
-          .post(`http://localhost:8000/registros`, data)
+          .post(`https://api-reto-iot.herokuapp.com/registros`, data)
           .then((res) => {
             console.log(res);
             console.log(res.data);

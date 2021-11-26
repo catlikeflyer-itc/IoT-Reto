@@ -40,7 +40,7 @@ export default function AddAdmin() {
       };
 
       axios
-        .post(`http://localhost:8000/admin`, user)
+        .post(`https://api-reto-iot.herokuapp.com/admin`, user)
         .then((res) => {
           console.log(res);
           console.log(res.data);
