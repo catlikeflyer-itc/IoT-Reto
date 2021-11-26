@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Admin from "./Pages/Admin";
 import Salon from "./Pages/Salon";
+import Main from "./Pages/Main";
 
 const theme = createTheme({
   typography: {
@@ -22,7 +23,7 @@ function App() {
         <Navbar></Navbar>
         <Router>
           <Routes>
-            <Route exact path="/" />
+            <Route exact path="/" element={<Main />} />
             <Route path="/admin" element={<Admin/>} />
             <Route path="/salones" element={<Salon/>} />
           </Routes>
