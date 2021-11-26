@@ -37,7 +37,7 @@ app.add_middleware(
 async def main():
     return crud.main_html_reponse()
 
-@app.get("/registros/", response_model=List[schemas.Registro])
+@app.get("/registros", response_model=List[schemas.Registro])
 def get_all_registros(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_registros(db, skip=skip, limit=limit)
 
@@ -49,15 +49,15 @@ def get_all_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_salones(db, skip=skip, limit=limit)
 
-@app.post("/registros/", response_model=schemas.Registro)
+@app.post("/registros", response_model=schemas.Registro)
 def create_registro(registro: schemas.Registro, db: Session = Depends(get_db)):
     return crud.add_registro(db, registro)
 
-@app.post("/admin/", response_model=schemas.Admin)
+@app.post("/admin", response_model=schemas.Admin)
 def create_admin(admin: schemas.Admin, db: Session = Depends(get_db)):
     return crud.add_admin(db, admin=admin)
 
-@app.post("/salon/", response_model=schemas.Salon)
+@app.post("/salon", response_model=schemas.Salon)
 def create_salon(salon: schemas.Salon, db: Session = Depends(get_db)):
     return crud.add_salon(db, salon=salon)
 
