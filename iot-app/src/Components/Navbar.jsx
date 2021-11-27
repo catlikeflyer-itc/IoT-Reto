@@ -4,15 +4,10 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  SwipeableDrawer,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
+import DrawerComponent from "./Drawer";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -37,48 +32,13 @@ export default function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
 
   const items = [
-    "Home",
-    "Administradores",
-    "Salones",
-    "Registros",
+    { title: "Home", to: "" },
+    { title: "Administradores", to: "admin" },
+    { title: "Salones", to: "salones" },
+    { title: "Registros", to: "registros" },
   ];
-
-  const list = (anchor) => (
-    <div
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-      className={classes.list}
-    >
-      <List>
-        {items.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
 
   return (
     <div>
@@ -86,39 +46,14 @@ export default function Navbar() {
         <Toolbar>
           <img alt="logo" src={""} className={classes.logo} />
           {isMobile ? (
-            <div className={classes.links}>
-              <IconButton
-                color="textPrimary"
-                className={classes.menuButton}
-                edge="start"
-                aria-label="right"
-                onClick={toggleDrawer("right", true)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <SwipeableDrawer
-                anchor={"right"}
-                open={state["right"]}
-                onClose={toggleDrawer("right", false)}
-                onOpen={toggleDrawer("right", true)}
-              >
-                {list("right")}
-              </SwipeableDrawer>
-            </div>
+            <DrawerComponent linkList={items} />
           ) : (
             <div className={classes.links}>
-              <Button href="/" color="inherit">
-                Home
-              </Button>
-              <Button edge="right" href="admin" color="inherit">
-                Administradores
-              </Button>
-              <Button edge="right" href="salones" color="inherit">
-                Salones
-              </Button>
-              <Button href="registros" color="inherit">
-                Registros
-              </Button>
+              {items.map((item) => (
+                <Button href={item.to.length > 0 ? (item.to) : ("/")} color="inherit">
+                  {item.title}
+                </Button>
+              ))}
             </div>
           )}
         </Toolbar>

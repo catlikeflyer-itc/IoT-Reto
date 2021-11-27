@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import axios from "axios";
 import RegistroCard from "../Components/RegistroCard";
 import AddRegistro from "../Components/AddRegistro";
@@ -18,7 +18,6 @@ export default function Registros() {
   }, []);
 
   return (
-    <Box m={4}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
           <AddRegistro />
@@ -33,6 +32,5 @@ export default function Registros() {
             </Grid>
         </Grid>
       </Grid>
-    </Box>
   );
 }
