@@ -1,7 +1,9 @@
 from typing import List
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 import crud, models, schemas
 from config import SessionLocal, engine
@@ -33,9 +35,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
 @app.get("/", response_class=HTMLResponse)
-async def main():
-    return crud.main_html_reponse()
+async def main(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/registros", response_model=List[schemas.Registro])
 def get_all_registros(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):

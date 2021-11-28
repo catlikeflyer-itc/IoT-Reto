@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.sql.expression import update
 import models, schemas
 
-def main_html_reponse():
+
+def main_html_reponse(res):
     return """
     <html>
         <head>
