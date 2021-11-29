@@ -130,8 +130,8 @@ export default function AddRegistro() {
       </Box>
       <Box mt={1} width="100%">
         <TextField
-          id="humedad"
-          label="Humedad"
+          id="alcochol"
+          label="Alcohol"
           required={true}
           onChange={onHumedadChange}
           error={humedadError}

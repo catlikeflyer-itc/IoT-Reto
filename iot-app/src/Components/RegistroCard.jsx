@@ -25,7 +25,7 @@ export default function RegistroCard({ data }) {
             Tiempo: {data.tiempo} <br />
             CO2: {data.CO2} <br />
             CO: {data.CO} <br />
-            Humedad: {data.humedad} <br />
+            Alcohol: {data.alcohol} <br />
             {verified && (
               <div>
                 Salon: {data.idSalon} <br />
