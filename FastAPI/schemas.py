@@ -7,7 +7,7 @@ class Registro(BaseModel):
     tiempo: str # Change to datetime
     CO: float
     CO2: float
-    humedad: float
+    alcohol: float
     idSalon: Optional[int]
     matricula: Optional[str]
 

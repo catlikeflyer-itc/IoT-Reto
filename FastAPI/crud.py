@@ -42,7 +42,7 @@ def add_registro(db: Session, registro: schemas.Registro):
         tiempo=registro.tiempo,
         CO=registro.CO,
         CO2=registro.CO2,
-        humedad=registro.humedad,
+        alcohol=registro.alcohol,
         idSalon=registro.idSalon,
         matricula=registro.matricula,
     )
