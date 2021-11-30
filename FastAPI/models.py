@@ -10,7 +10,7 @@ class Registro(Base):
     CO = Column(Float, nullable=False)
     CO2 = Column(Float, nullable=False)
     alcohol = Column(Float, nullable=False)
-    idDevice = Column(Integer, ForeignKey('dispositivo.idDevice'), nullable=False) # FK
+    idDevice = Column(Integer, ForeignKey('dispositivo.idDevice'), nullable=True) # FK
     idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=True) # FK
     matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=True) # FK
 
