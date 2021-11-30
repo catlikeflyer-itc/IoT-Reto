@@ -43,7 +43,7 @@ templates = Jinja2Templates(directory="templates")
 async def main(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/registros", response_model=List[schemas.Registro])
+@app.get("/registros", response_model=List[schemas.RegistroGet])
 def get_all_registros(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_registros(db, skip=skip, limit=limit)
 
