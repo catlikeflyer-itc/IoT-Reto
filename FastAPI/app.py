@@ -55,8 +55,8 @@ def get_all_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_salones(db, skip=skip, limit=limit)
 
-@app.post("/registros", response_model=schemas.Registro)
-def create_registro(registro: schemas.Registro, db: Session = Depends(get_db)):
+@app.post("/registros", response_model=schemas.RegistroPost)
+def create_registro(registro: schemas.RegistroPost, db: Session = Depends(get_db)):
     return crud.add_registro(db, registro)
 
 @app.post("/admin", response_model=schemas.Admin)
