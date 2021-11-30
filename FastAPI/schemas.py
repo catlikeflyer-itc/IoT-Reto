@@ -49,3 +49,12 @@ class RegistroUpdate(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Dispositivo(BaseModel):
+    idDevice: Optional[int]
+    sensorCO: bool
+    sensorCO2: bool
+    sensorAlcohol: bool
+
+    class Config:
+        orm_mode = True

@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy.sql.expression import update
 import models, schemas
 
-
 def main_html_reponse(res):
     return """
     <html>
@@ -87,3 +86,18 @@ def update_registro(id: int, db: Session, registro: schemas.RegistroUpdate):
     db.execute(update(models.Registro).where(models.Registro.id == id).values(idSalon=registro.idSalon, matricula=registro.matricula))
     db.commit()
  
+def get_dispositivos(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Dispositivo).offset(skip).limit(limit).all()
+
+def add_dispositivo(db: Session, dispositivo: schemas.Dispositivo):
+    db_dispositivo = models.Dispositivo(
+        idDevice=dispositivo.idDevice,
+        sensorCO=dispositivo.sensorCO,
+        sensorCO2=dispositivo.sensorCO2,
+        sensorAlcohol=dispositivo.sensorAlcohol,
+    )
+    db.add(db_dispositivo)
+    db.commit()
+    db.refresh(db_dispositivo)
+
+    return db_dispositivo
