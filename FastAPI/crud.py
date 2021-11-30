@@ -101,3 +101,4 @@ def add_dispositivo(db: Session, dispositivo: schemas.Dispositivo):
     db.refresh(db_dispositivo)
 
     return db_dispositivo
+
