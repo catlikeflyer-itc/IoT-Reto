@@ -14,9 +14,9 @@ export default function DeviceCard({data}) {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             MAC: {data.MAC}<br />
-            Sensor CO: {data.sensorCO}<br />
-            Sensor CO2 {data.sensorCO2}<br />
-            Sensor Alcohol: {data.alcohol}<br />
+            Sensor CO: {(data.sensorCO) ? ("✅") : ("❌")}<br />
+            Sensor CO2 {(data.sensorCO2) ? ("✅") : ("❌")}<br />
+            Sensor Alcohol: {(data.sensorAlcohol) ? ("✅") : ("❌")}<br />
           </Typography>
         </CardContent>
       </CardActionArea>

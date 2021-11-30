@@ -43,7 +43,6 @@ export default function AddAdmin() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setMACError(false);
 
     if (!MACError) {
       const dispo = {
