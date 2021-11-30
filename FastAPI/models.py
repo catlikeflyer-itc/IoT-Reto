@@ -13,7 +13,7 @@ class Registro(Base):
     idDevice = Column(Integer, ForeignKey('device.id'), nullable=False) # FK
     idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=True) # FK
     matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=True) # FK
-    
+
     salon = relationship("Salon", back_populates="registros")
     admin = relationship("Admin", back_populates="registros")
 
@@ -39,6 +39,7 @@ class Dispositivo(Base):
     __tablename__ = 'dispositivo'
 
     idDevice = Column(Integer, primary_key=True, index=True)
+    MAC = Column(String(50), nullable=False)
     sensorCO = Column(Float, nullable=False)
     sensorCO2 = Column(Float, nullable=False)
     sensorAlcohol = Column(Float, nullable=False)

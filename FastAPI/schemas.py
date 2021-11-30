@@ -52,6 +52,7 @@ class RegistroUpdate(BaseModel):
 
 class Dispositivo(BaseModel):
     idDevice: Optional[int]
+    MAC: str
     sensorCO: bool
     sensorCO2: bool
     sensorAlcohol: bool
