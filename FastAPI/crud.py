@@ -38,7 +38,7 @@ def get_registros(db: Session, skip: int = 0, limit: int = 100):
 def get_registro(db: Session, id: int):
     return db.query(models.Registro).filter(models.Registro.id == id).first()
 
-def add_registro(db: Session, registro: schemas.Registro):
+def add_registro(db: Session, registro: schemas.RegistroPost):
     now = datetime.now()
     db_registro = models.Registro(
         tiempo=now.strftime("%m/%d/%Y, %H:%M:%S"),

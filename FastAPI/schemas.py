@@ -2,8 +2,21 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
 
-class Registro(BaseModel):
+class RegistroPost(BaseModel):
     id: Optional[int]
+    CO: float
+    CO2: float
+    alcohol: float
+    idDevice: Optional[int]
+    idSalon: Optional[int]
+    matricula: Optional[str]
+
+    class Config:
+        orm_mode = True
+
+class RegistroGet(BaseModel):
+    id: Optional[int]
+    tiempo: str
     CO: float
     CO2: float
     alcohol: float
