@@ -1,6 +1,8 @@
+from datetime import datetime
 from sqlalchemy.orm import Session
 from sqlalchemy.sql.expression import update
 import models, schemas
+import time
 
 def main_html_reponse(res):
     return """
@@ -37,8 +39,9 @@ def get_registro(db: Session, id: int):
     return db.query(models.Registro).filter(models.Registro.id == id).first()
 
 def add_registro(db: Session, registro: schemas.Registro):
+    now = datetime.now()
     db_registro = models.Registro(
-        tiempo=registro.tiempo,
+        tiempo=now.strftime("%m/%d/%Y, %H:%M:%S"),
         CO=registro.CO,
         CO2=registro.CO2,
         alcohol=registro.alcohol,

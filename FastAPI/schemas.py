@@ -4,7 +4,6 @@ from typing import Optional
 
 class Registro(BaseModel):
     id: Optional[int]
-    tiempo: str # Change to datetime
     CO: float
     CO2: float
     alcohol: float
