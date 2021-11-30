@@ -38,6 +38,7 @@ export default function Navbar() {
     { title: "Administradores", to: "admin" },
     { title: "Salones", to: "salones" },
     { title: "Registros", to: "registros" },
+    { title: "Dispositivos", to: "dispositivos" },
   ];
 
   return (

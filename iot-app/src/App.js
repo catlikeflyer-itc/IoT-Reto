@@ -6,6 +6,7 @@ import Admin from "./Pages/Admin";
 import Salon from "./Pages/Salon";
 import Main from "./Pages/Main";
 import Registros from "./Pages/Registros";
+import Dispositivo from "./Pages/Dispositivo";
 
 const theme = createTheme({
   typography: {
@@ -25,9 +26,10 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Main />} />
-            <Route path="/admin" element={<Admin/>} />
-            <Route path="/salones" element={<Salon/>} />
-            <Route path="/registros" element={<Registros/>} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/salones" element={<Salon />} />
+            <Route path="/dispositivos" element={<Dispositivo />} />
+            <Route path="/registros" element={<Registros />} />
           </Routes>
         </Router>
       </div>

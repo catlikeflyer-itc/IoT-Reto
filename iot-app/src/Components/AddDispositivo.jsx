@@ -10,71 +10,93 @@ import {
 import axios from "axios";
 
 export default function AddAdmin() {
-  const [matricula, setMatricula] = useState("");
-  const [matError, setMatError] = useState(false);
-  const [isStudent, setisStudent] = useState(false);
+  const [MAC, setMAC] = useState("");
+  const [MACError, setMACError] = useState(false);
+  const [sensorCO, setSensorCO] = useState(false);
+  const [sensorCO2, setSensorCO2] = useState(false);
+  const [sensorAlcohol, setSensorAlcohol] = useState(false);
 
-  const onStudentChange = (e) => {
+  const onCOChange = (e) => {
     e.preventDefault();
-    setisStudent(!isStudent);
+    setSensorCO(!sensorCO);
   };
 
-  const onMatriculaChange = (e) => {
+  const onCO2Change = (e) => {
     e.preventDefault();
-    setMatError(false);
-    setMatricula(e.target.value);
+    setSensorCO2(!sensorCO2);
+  };
 
-    if (matricula.length <= 0 || matricula.length > 10) {
-      setMatError(true);
+  const onAlcoholChange = (e) => {
+    e.preventDefault();
+    setSensorAlcohol(!sensorCO);
+  };
+
+  const onMACChange = (e) => {
+    e.preventDefault();
+    setMACError(false);
+    setMAC(e.target.value);
+
+    if (MAC.length !== 12) {
+      setMACError(true);
     }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setMatError(false);
+    setMACError(false);
 
-    if (!matError) {
-      const user = {
-        matricula: matricula,
-        isStudent: isStudent,
+    if (!MACError) {
+      const dispo = {
+        MAC: MAC,
+        sensorCO: sensorCO,
+        sensorCO2: sensorCO2,
+        sensorAlcohol: sensorAlcohol,
       };
 
       axios
-        .post(`https://api-reto-iot.herokuapp.com/admin`, user)
+        .post(`https://api-reto-iot.herokuapp.com/dispositivo`, dispo)
         .then((res) => {
           console.log(res);
           console.log(res.data);
-          alert("Administrador agregado");
+          alert("Dipositivo agregado");
           window.location.reload();
         })
         .catch((err) => {
           console.log(err);
-          alert("Erro ao adicionar usuário!");
+          alert("Error agregando dispositivo!");
         });
     } else {
       console.log("Error");
-      alert("matricula invalida");
+      alert("MAC invalida");
     }
   };
 
   return (
     <Box m={4} display="flex" flexDirection="column" className="boxer">
       <Typography gutterBottom variant="h6" color="black" align="left">
-        Agregar Administrador
+        Agregar Dispositivo
       </Typography>
       <Box mt={1} width="100%">
         <TextField
-          id="matricula"
-          label="Matricula"
+          id="mac"
+          label="MAC Address"
           required={true}
-          onChange={onMatriculaChange}
-          error={matError}
+          onChange={onMACChange}
+          error={MACError}
         />
       </Box>
       <Box mt={1} width="100%">
         <FormControlLabel
-          label="¿Es estudiante?"
-          control={<Checkbox checked={isStudent} onChange={onStudentChange} />}
+          label="Sensor CO"
+          control={<Checkbox checked={sensorCO} onChange={onCOChange} />}
+        />
+        <FormControlLabel
+          label="Sensor CO"
+          control={<Checkbox checked={sensorCO2} onChange={onCO2Change} />}
+        />
+        <FormControlLabel
+          label="Sensor Alcohol"
+          control={<Checkbox checked={sensorAlcohol} onChange={onAlcoholChange} />}
         />
       </Box>
       <Box mt={1} width="100%">
