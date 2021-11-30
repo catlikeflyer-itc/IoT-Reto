@@ -10,12 +10,13 @@ class Registro(Base):
     CO = Column(Float, nullable=False)
     CO2 = Column(Float, nullable=False)
     alcochol = Column(Float, nullable=False)
-    idDevice = Column(Integer, ForeignKey('device.id'), nullable=False) # FK
+    idDevice = Column(Integer, ForeignKey('dispositivo.idDevice'), nullable=False) # FK
     idSalon = Column(Integer, ForeignKey('salon.idSalon'), nullable=True) # FK
     matricula = Column(String(50), ForeignKey('admin.matricula'), nullable=True) # FK
 
     salon = relationship("Salon", back_populates="registros")
     admin = relationship("Admin", back_populates="registros")
+    dispositivo = relationship("Dispositivo", back_populates="registros")
 
 class Salon(Base):
     __tablename__ = 'salon'

@@ -8,6 +8,7 @@ class Registro(BaseModel):
     CO: float
     CO2: float
     alcohol: float
+    idDevice: int
     idSalon: Optional[int]
     matricula: Optional[str]
 

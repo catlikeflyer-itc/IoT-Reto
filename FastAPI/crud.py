@@ -91,7 +91,7 @@ def get_dispositivos(db: Session, skip: int = 0, limit: int = 100):
 
 def add_dispositivo(db: Session, dispositivo: schemas.Dispositivo):
     db_dispositivo = models.Dispositivo(
-        idDevice=dispositivo.idDevice,
+        MAC=dispositivo.MAC,
         sensorCO=dispositivo.sensorCO,
         sensorCO2=dispositivo.sensorCO2,
         sensorAlcohol=dispositivo.sensorAlcohol,
