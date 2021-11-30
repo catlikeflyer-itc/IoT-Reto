@@ -28,7 +28,7 @@ export default function AddAdmin() {
 
   const onAlcoholChange = (e) => {
     e.preventDefault();
-    setSensorAlcohol(!sensorCO);
+    setSensorAlcohol(!sensorAlcohol);
   };
 
   const onMACChange = (e) => {
