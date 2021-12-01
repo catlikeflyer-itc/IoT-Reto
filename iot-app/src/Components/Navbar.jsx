@@ -38,8 +38,8 @@ export default function Navbar() {
     { title: "Home", to: "" },
     { title: "Administradores", to: "admin" },
     { title: "Salones", to: "salones" },
-    { title: "Registros", to: "registros" },
     { title: "Dispositivos", to: "dispositivos" },
+    { title: "Registros", to: "registros" },
   ];
 
   return (

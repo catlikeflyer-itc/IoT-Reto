@@ -3,21 +3,17 @@ import { TextField, Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 
 export default function AddRegistro() {
-  const [tiempo, setTiempo] = useState("00");
   const [CO, setCO] = useState(0);
   const [CO2, setCO2] = useState(0);
   const [humedad, setHumedad] = useState(0);
   const [matricula, setMatricula] = useState("AA11");
   const [salon, setSalon] = useState(9999);
+  const [device, setDevice] = useState(0)
 
   const [COError, setCOError] = useState(false);
   const [CO2Error, setCO2Error] = useState(false);
   const [humedadError, setHumedadError] = useState(false);
   const [salonError, setSalonError] = useState(false);
-
-  const onTiempoChange = (e) => {
-    setTiempo(e.target.value);
-  };
 
   const onCOChange = (e) => {
     e.preventDefault();
@@ -65,13 +61,18 @@ export default function AddRegistro() {
     setMatricula(e.target.value);
   }
 
+  const onDeviceChange = (e) => {
+    setDevice(parseInt(e.target.value));
+  }
+
     const onSubmit = (event) => {
       event.preventDefault();
 
       const data = {
         CO: CO,
         CO2: CO2,
-        humedad: humedad,
+        alcohol: humedad,
+        idDevice: device,
         idSalon: salon,
         matricula: matricula,
       };
@@ -97,7 +98,7 @@ export default function AddRegistro() {
     };
     
   return (
-    <Box m={4} display="flex" flexDirection="column" className="boxer">
+    <Box m={4} display="flex" flexDirection="column" className="boxer" position="fixed">
       <Typography gutterBottom variant="h6" color="black" align="left">
         Agregar Registro Manual
       </Typography>
@@ -135,6 +136,14 @@ export default function AddRegistro() {
           required={true}
           onChange={onSalonChange}
           error={salonError}
+        />
+      </Box>
+      <Box mt={1} width="100%">
+        <TextField
+          id="device"
+          label="Dispositivo"
+          required={false}
+          onChange={onDeviceChange}
         />
       </Box>
       <Box mt={1} width="100%">

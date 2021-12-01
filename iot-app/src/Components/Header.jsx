@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => {
     title: {
       fontSize: 50,
       color: "#ffe300",
-      fontFamily: "Share Tech",
+      fontFamily: "Oswald",
     },
     container: {
       width: "100%",
@@ -50,29 +50,37 @@ export default function Header() {
         display="flex"
         alignItems="center"
       >
-        <Box m={isMobile ? (3) : (2)}>
+        <Box p={isMobile ? 3 : 2}>
           <Typography
             variant="h2"
             component="h6"
             align="center"
             mt={4}
-            style={{ fontFamily: "Roboto", color: "white" }}
+            style={{ fontFamily: "Oswald", color: "white" }}
             gutterBottom
           >
             Implementación de IoT: Ciudades Inteligentes
           </Typography>
-            <Box display="flex" justifyContent="center">
-              <Typography
-                paragraph
-                align="center"
-                style={{ color: "white", fontSize: 20, maxWidth: "70%" }}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-                tempore maxime harum placeat quod. Ut, natus beatae vel
-                similique deserunt sint iste repellat illum laborum est. Quas
-                provident vitae at?
-              </Typography>
-            </Box>
+          <Box display="flex" justifyContent="center">
+            <Typography
+              paragraph
+              align="center"
+              style={{ color: "white", fontSize: 20, maxWidth: "70%" }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              tempore maxime harum placeat quod. Ut, natus beatae vel similique
+              deserunt sint iste repellat illum laborum est. Quas provident
+              vitae at?
+              <ul>
+                <li>Joshua Amaya</li>
+                <li>Diego Corrales</li>
+                <li>Sebastián González</li>
+                <li>Gerardo Gutiérrez</li>
+                <li>Mateo Herrera</li>
+                <li>Do Hyun Nam</li>
+              </ul>
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </div>

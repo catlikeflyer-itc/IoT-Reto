@@ -96,7 +96,7 @@ export default function AddSalon() {
   };
 
   return (
-    <Box m={4} display="flex" flexDirection="column" className="boxer">
+    <Box m={4} display="flex" flexDirection="column" className="boxer" position="fixed">
       <Typography gutterBottom variant="h6" color="black" align="left">
         Agregar Salon
       </Typography>
