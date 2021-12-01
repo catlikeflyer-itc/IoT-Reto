@@ -20,6 +20,7 @@ export default function RegistroCard({ data }) {
       .delete(`https://api-reto-iot.herokuapp.com/registros/${data.id}`)
       .then((response) => {
         alert("Registro eliminado");
+        window.location.reload();
       })
       .catch((error) => {
         alert("Error al eliminar el registro");
