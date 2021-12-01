@@ -5,7 +5,7 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => {
   return {
     backImageDiv: {
-      height: "70vh",
+      height: "100vh",
       backgroundImage: `url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)`,
       backgroundPosition: "center",
       backgroundSize: "cover",
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => {
     },
     container: {
       width: "100%",
-      height: "70vh",
+      height: "100vh",
     },
     appbarSpace: theme.mixins.toolbar,
   };
@@ -50,7 +50,7 @@ export default function Header() {
         display="flex"
         alignItems="center"
       >
-        <Box m={2}>
+        <Box m={isMobile ? (3) : (2)}>
           <Typography
             variant="h2"
             component="h6"
@@ -61,7 +61,6 @@ export default function Header() {
           >
             Implementación de IoT: Ciudades Inteligentes
           </Typography>
-          {!isMobile && (
             <Box display="flex" justifyContent="center">
               <Typography
                 paragraph
@@ -74,7 +73,6 @@ export default function Header() {
                 provident vitae at?
               </Typography>
             </Box>
-          )}
         </Box>
       </Box>
     </div>

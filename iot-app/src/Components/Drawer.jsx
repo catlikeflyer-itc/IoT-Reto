@@ -35,7 +35,7 @@ function DrawerComponent({ linkList }) {
           {linkList.map((link) => (
             <ListItem onClick={() => setOpenDrawer(false)}>
               <ListItemText>
-                <a href={link.to.length > 0 ? (link.to) : ("/")}>{link.title}</a>
+                <a className={classes.link} href={link.to.length > 0 ? (link.to) : ("/")}>{link.title}</a>
               </ListItemText>
             </ListItem>
           ))}
