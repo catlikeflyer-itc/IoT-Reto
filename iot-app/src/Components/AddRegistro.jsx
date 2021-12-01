@@ -69,7 +69,6 @@ export default function AddRegistro() {
       event.preventDefault();
 
       const data = {
-        tiempo: tiempo,
         CO: CO,
         CO2: CO2,
         humedad: humedad,
@@ -102,14 +101,6 @@ export default function AddRegistro() {
       <Typography gutterBottom variant="h6" color="black" align="left">
         Agregar Registro Manual
       </Typography>
-      <Box mt={1} width="100%">
-        <TextField
-          id="tiempo"
-          label="Tiempo"
-          required={true}
-          onChange={onTiempoChange}
-        />
-      </Box>
       <Box mt={1} width="100%">
         <TextField
           id="CO"
