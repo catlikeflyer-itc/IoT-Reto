@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 import UpdateModal from "./UpdateModal";
+import axios from "axios";
 
 export default function RegistroCard({ data }) {
   const [verified, setVerified] = useState(false);
@@ -13,6 +14,17 @@ export default function RegistroCard({ data }) {
       setVerified(true);
     }
   }, [data]);
+
+  const onDelete = () => {
+    axios
+      .delete(`https://api-reto-iot.herokuapp.com/registros/${data.id}`)
+      .then((response) => {
+        alert("Registro eliminado");
+      })
+      .catch((error) => {
+        alert("Error al eliminar el registro");
+      });
+  };
 
   return (
     <Card sx={{ maxWidth: "345" }}>
@@ -39,6 +51,9 @@ export default function RegistroCard({ data }) {
       </CardActionArea>
       <CardActions>
         <UpdateModal idx={data.id} verified={verified} />
+        <Button size="small" color="secondary" onClick={onDelete}>
+          Borrar
+        </Button>
       </CardActions>
     </Card>
   );

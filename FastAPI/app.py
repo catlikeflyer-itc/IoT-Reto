@@ -47,29 +47,33 @@ async def main(request: Request):
 def get_all_registros(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_registros(db, skip=skip, limit=limit)
 
-@app.get("/admins", response_model=List[schemas.Admin])
-def get_all_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    return crud.get_admins(db, skip=skip, limit=limit)
-
-@app.get("/salones", response_model=List[schemas.Salon])
-def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    return crud.get_salones(db, skip=skip, limit=limit)
-
 @app.post("/registros", response_model=schemas.RegistroPost)
 def create_registro(registro: schemas.RegistroPost, db: Session = Depends(get_db)):
     return crud.add_registro(db, registro)
+
+@app.put("/registros/{registro_id}", response_model=schemas.RegistroUpdate)
+def update_registro(registro_id: int, registro: schemas.RegistroUpdate, db: Session = Depends(get_db)):
+    return crud.update_registro(db=db, id=registro_id, registro=registro)
+
+@app.delete("/registros/{registro_id}")
+def delete_registro(registro_id: int, db: Session = Depends(get_db)):
+    return crud.delete_registro(db=db, id=registro_id)
+
+@app.get("/admins", response_model=List[schemas.Admin])
+def get_all_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_admins(db, skip=skip, limit=limit)
 
 @app.post("/admin", response_model=schemas.Admin)
 def create_admin(admin: schemas.Admin, db: Session = Depends(get_db)):
     return crud.add_admin(db, admin=admin)
 
+@app.get("/salones", response_model=List[schemas.Salon])
+def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_salones(db, skip=skip, limit=limit)
+
 @app.post("/salon", response_model=schemas.Salon)
 def create_salon(salon: schemas.Salon, db: Session = Depends(get_db)):
     return crud.add_salon(db, salon=salon)
-
-@app.put("/registros/{registro_id}", response_model=schemas.RegistroUpdate)
-def update_registro(registro_id: int, registro: schemas.RegistroUpdate, db: Session = Depends(get_db)):
-    return crud.update_registro(db=db, id=registro_id, registro=registro)
 
 @app.get("/dispositivos", response_model=List[schemas.Dispositivo])
 def get_all_dispositivos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):

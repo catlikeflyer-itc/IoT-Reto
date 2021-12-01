@@ -105,3 +105,7 @@ def add_dispositivo(db: Session, dispositivo: schemas.Dispositivo):
 
     return db_dispositivo
 
+def delete_registro(id: int, db: Session):
+    db.query(models.Registro).filter(models.Registro.id == id).delete()
+    db.commit()
+    
