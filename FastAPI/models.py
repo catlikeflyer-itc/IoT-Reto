@@ -41,8 +41,8 @@ class Dispositivo(Base):
 
     idDevice = Column(Integer, primary_key=True, index=True)
     MAC = Column(String(50), nullable=False)
-    sensorCO = Column(Float, nullable=False)
-    sensorCO2 = Column(Float, nullable=False)
-    sensorAlcohol = Column(Float, nullable=False)
+    sensorCO = Column(Boolean, nullable=False)
+    sensorCO2 = Column(Boolean, nullable=False)
+    sensorAlcohol = Column(Boolean, nullable=False)
 
     registros = relationship("Registro", back_populates="dispositivo")
