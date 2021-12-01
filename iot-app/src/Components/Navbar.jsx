@@ -8,11 +8,12 @@ import {
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import DrawerComponent from "./Drawer";
+import tec from "../tec.png";
 
 const useStyles = makeStyles((theme) => {
   return {
     logo: {
-      maxWidth: 120,
+      maxWidth: 100,
       marginRight: "10px",
     },
     links: {
@@ -45,7 +46,7 @@ export default function Navbar() {
     <div>
       <AppBar position="fixed">
         <Toolbar>
-          <img alt="logo" src={""} className={classes.logo} />
+          <img alt="logo" src={tec} className={classes.logo} />
           {isMobile ? (
             <DrawerComponent linkList={items} />
           ) : (
