@@ -16,6 +16,11 @@ const theme = createTheme({
     fontWeightMedium: 600,
     fontWeightBold: 700,
   },
+  palette: {
+    secondary: {
+      main: "#ff0e0e",
+    },
+  },
 });
 
 function App() {
