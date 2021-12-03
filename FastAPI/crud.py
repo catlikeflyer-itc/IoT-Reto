@@ -45,6 +45,7 @@ def add_registro(db: Session, registro: schemas.RegistroPost):
         CO=registro.CO,
         CO2=registro.CO2,
         alcohol=registro.alcohol,
+        idDevice=registro.idDevice,
         idSalon=registro.idSalon,
         matricula=registro.matricula,
     )
@@ -107,4 +108,15 @@ def add_dispositivo(db: Session, dispositivo: schemas.Dispositivo):
 def delete_registro(id: int, db: Session):
     db.query(models.Registro).filter(models.Registro.id == id).delete()
     db.commit()
+
+def delete_admin(id: str, db: Session):
+    db.query(models.Admin).filter(models.Admin.matricula == id).delete()
+    db.commit()
+
+def delete_dispositivo(id: int, db: Session):
+    db.query(models.Dispositivo).filter(models.Dispositivo.idDevice == id).delete()
+    db.commit()
     
+def delete_salon(id: int, db: Session):
+    db.query(models.Salon).filter(models.Salon.idSalon == id).delete()
+    db.commit()

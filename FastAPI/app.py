@@ -67,6 +67,10 @@ def get_all_admins(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 def create_admin(admin: schemas.Admin, db: Session = Depends(get_db)):
     return crud.add_admin(db, admin=admin)
 
+@app.delete("/admin/{admin_id}")
+def delete_admin(admin_id: str, db: Session = Depends(get_db)):
+    return crud.delete_admin(db=db, id=admin_id)
+
 @app.get("/salones", response_model=List[schemas.Salon])
 def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_salones(db, skip=skip, limit=limit)
@@ -75,6 +79,10 @@ def get_all_salones(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 def create_salon(salon: schemas.Salon, db: Session = Depends(get_db)):
     return crud.add_salon(db, salon=salon)
 
+@app.delete("/salon/{salon_id}")
+def delete_salon(salon_id: str, db: Session = Depends(get_db)):
+    return crud.delete_salon(db=db, id=salon_id)
+
 @app.get("/dispositivos", response_model=List[schemas.Dispositivo])
 def get_all_dispositivos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_dispositivos(db, skip=skip, limit=limit)
@@ -82,4 +90,8 @@ def get_all_dispositivos(skip: int = 0, limit: int = 100, db: Session = Depends(
 @app.post("/dispositivo", response_model=schemas.Dispositivo)
 def add_dispositivo(dispositivo: schemas.Dispositivo, db: Session = Depends(get_db)):
     return crud.add_dispositivo(db, dispositivo=dispositivo)
+
+@app.delete("/dispositivo/{dispositivo_id}")
+def delete_dispositivo(dispositivo_id: int, db: Session = Depends(get_db)):
+    return crud.delete_dispositivo(db=db, id=dispositivo_id)
 
