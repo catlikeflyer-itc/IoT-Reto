@@ -36,8 +36,8 @@ export default function RegistroCard({ data }) {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Tiempo: {data.tiempo} <br />
-            CO2: {data.CO2} <br />
-            CO: {data.CO} <br />
+            CO2: {data.CO2} ppm <br />
+            CO: {data.CO} ppm<br />
             Alcohol: {data.alcohol} <br />
             {verified && (
               <div>
