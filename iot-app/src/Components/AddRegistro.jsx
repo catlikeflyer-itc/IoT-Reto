@@ -20,19 +20,19 @@ export default function AddRegistro() {
     setCOError(false);
     setCO(e.target.value);
 
-    if (e.target.value === "" || isNaN(parseInt(e.target.value))) {
+    if (e.target.value === "" || isNaN(parseFloat(e.target.value))) {
       setCOError(true);
     }
 
-    setCO(parseInt(e.target.value));
+    setCO(parseFloat(e.target.value));
   };
 
   const onCO2Change = (e) => {
     e.preventDefault();
     setCO2Error(false);
-    setCO2(parseInt(e.target.value));
+    setCO2(parseFloat(e.target.value));
 
-    if (e.target.value === "" || isNaN(parseInt(e.target.value))) {
+    if (e.target.value === "" || isNaN(parseFloat(e.target.value))) {
       setCO2Error(true);
     }
   };
@@ -40,9 +40,9 @@ export default function AddRegistro() {
   const onHumedadChange = (e) => {
     e.preventDefault();
     setHumedadError(false);
-    setHumedad(parseInt(e.target.value));
+    setHumedad(parseFloat(e.target.value));
 
-    if (e.target.value === "" || isNaN(parseInt(e.target.value))) {
+    if (e.target.value === "" || isNaN(parseFloat(e.target.value))) {
       setHumedadError(true);
     }
   };
@@ -50,7 +50,7 @@ export default function AddRegistro() {
   const onSalonChange = (e) => {
     e.preventDefault();
     setSalonError(false);
-    setSalon(parseInt(e.target.value));
+    setSalon(parseFloat(e.target.value));
 
     if (e.target.value === "" || isNaN(parseInt(e.target.value))) {
       setSalonError(true);
