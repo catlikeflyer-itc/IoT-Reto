@@ -14,6 +14,7 @@ export default function AddRegistro() {
   const [CO2Error, setCO2Error] = useState(false);
   const [humedadError, setHumedadError] = useState(false);
   const [salonError, setSalonError] = useState(false);
+  const [deviceError, setDeviceError] = useState(false);
 
   const onCOChange = (e) => {
     e.preventDefault();
@@ -62,7 +63,13 @@ export default function AddRegistro() {
   }
 
   const onDeviceChange = (e) => {
+    e.preventDefault()
+    setDeviceError(false)
     setDevice(parseInt(e.target.value));
+
+    if (e.target.value === "" || isNaN(parseInt(e.target.value))) {
+      setDeviceError(true);
+    }
   }
 
     const onSubmit = (event) => {
@@ -77,7 +84,7 @@ export default function AddRegistro() {
         matricula: matricula,
       };
 
-      if (!salonError) {
+      if (!salonError && !COError && !CO2Error && !humedadError && !deviceError) {
         console.log(data);
         axios
           .post(`https://api-reto-iot.herokuapp.com/registros`, data)
@@ -142,7 +149,7 @@ export default function AddRegistro() {
         <TextField
           id="device"
           label="Dispositivo"
-          required={false}
+          required={true}
           onChange={onDeviceChange}
         />
       </Box>
